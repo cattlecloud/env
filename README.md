@@ -14,7 +14,7 @@ The `env` package can be added to a project by running:
 go get cattlecloud.net/go/env@latest
 ```
 
-```shell
+```go
 import "cattlecloud.net/go/env"
 ```
 
@@ -25,7 +25,7 @@ import "cattlecloud.net/go/env"
 Use `env.ParseOS` and `env.Schema` for conveniently extracting values from the
 operating system environment variables.
 
-```
+```go
 var (
   home       string
   gomaxprocs int
@@ -42,7 +42,7 @@ err := env.ParseOS(env.Schema{
 the `StringOr` and `IntOr` variants can be used to provide fallback values in
 case the environment variables are not set.
 
-```
+```go
 err := env.ParseOS(env.Schema{
   "HOME":       env.StringOr(&home, "/doesnotexist"),
   "GOMAXPROCS": env.IntOr(&gomaxprocs, 8),
@@ -55,7 +55,7 @@ The `Schema` parsing is compatible with generic types, so if you have custom typ
 like UUID backed by string or ID backed by integers, they can still be used as
 targets for extraction.
 
-```
+```go
 type (
   uuid      string
   timestamp int64
