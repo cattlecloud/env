@@ -14,6 +14,72 @@ The `env` package can be added to a project by running:
 go get cattlecloud.net/go/env@latest
 ```
 
+```shell
+import "cattlecloud.net/go/env"
+```
+
+### Examples
+
+##### basics
+
+Use `env.ParseOS` and `env.Schema` for conveniently extracting values from the
+operating system environment variables.
+
+```
+var (
+  home       string
+  gomaxprocs int
+)
+
+err := env.ParseOS(env.Schema{
+  "HOME":       env.String(&home, true),
+  "GOMAXPROCS": env.Int(&gomaxprocs, true),
+})
+```
+
+##### fallbacks
+
+the `StringOr` and `IntOr` variants can be used to provide fallback values in
+case the environment variables are not set.
+
+```
+err := env.ParseOS(env.Schema{
+  "HOME":       env.StringOr(&home, "/doesnotexist"),
+  "GOMAXPROCS": env.IntOr(&gomaxprocs, 8),
+})
+```
+
+##### generics
+
+The `Schema` parsing is compatible with generic types, so if you have custom types
+like UUID backed by string or ID backed by integers, they can still be used as
+targets for extraction.
+
+```
+type (
+  uuid      string
+  timestamp int64
+)
+
+var (
+  id       uuid
+  creation timestamp
+)
+
+err := env.ParseOS(env.Schema{
+  "ID":       env.String(&id, true),
+  "CREATED":  env.Int(&creation, true),
+})
+```
+
+##### environments
+
+In addition to `ParseOS`, other parsers include
+
+- `ParseFile` - for parsing a file containing environment variable key-value pairs
+- `ParseMap` - for parsing a Go map containing string key-value pairs
+- `Parse[Environment]` for parsing arbitrary implementations of the `Environment` type
+
 ### License
 
 The `cattlecloud.net/go/env` module is open source under the [BSD](LICENSE) license.
