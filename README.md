@@ -4,7 +4,8 @@
 [![License](https://img.shields.io/github/license/cattlecloud/env?color=7C00D8&style=flat-square&label=License)](https://github.com/cattlecloud/env/blob/main/LICENSE)
 [![Build](https://img.shields.io/github/actions/workflow/status/cattlecloud/env/ci.yaml?style=flat-square&color=0FAA07&label=Tests)](https://github.com/cattlecloud/env/actions/workflows/ci.yaml)
 
-`env` provides a way to parse environment variables using a schema
+`env` is a Go package for safely extracting and parsing environment variables using a pre-defined
+schema with support for generic types.
 
 ### Getting Started
 
