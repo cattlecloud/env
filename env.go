@@ -1,4 +1,4 @@
-// Copyright (c) CattleCloud LLC
+// Copyright CattleCloud LLC 2024, 2026
 // SPDX-License-Identifier: BSD-3-Clause
 
 package env

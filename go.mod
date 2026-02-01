@@ -1,6 +1,6 @@
 module cattlecloud.net/go/env
 
-go 1.23
+go 1.25
 
 require (
 	github.com/shoenig/go-conceal v0.5.4
