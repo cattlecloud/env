@@ -34,4 +34,4 @@ jobs:
           just sysinfo
       - name: Run Go Test
         run: |
-          just init tidy lint test
+          just init tidy lint tests

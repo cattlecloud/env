@@ -15,8 +15,14 @@ tidy:
 
 # run tests across source tree
 [group('build')]
-test:
+tests:
     go test -v -race -count=1 ./...
+
+# run specific unit test
+[group('build')]
+[no-cd]
+test unit:
+    go test -v -count=1 -race -run {{unit}} 2>/dev/null
 
 # ensure copywrite headers present on source files
 [group('lint')]
